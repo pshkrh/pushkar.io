@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mobile Price Range Classification</title>
+    <meta name="description" content="Predict the price range of a mobile phone based on its specifications"/>
+    <link rel="icon" type="image/x-icon" href="/mobile-price-classification/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<div class="container d-flex align-items-center py-4">
+    <form class="border border-dark-subtle border-2 rounded p-3 w-auto m-auto needs-validation" id="classifierForm"
+          novalidate>
+        <div class="mb-3">
+            <h4>Mobile Price Range Classification</h4> <?php rand(10,100)?>
+            <small class="text-body-secondary">Predict the price range of a mobile phone based on its
+                specifications.</small>
+            <br>
+            <small class="text-body-secondary">Uses a Random Forest Classifier model with max_depth=23 and n_estimators=835 running
+                on AWS Lambda.</small>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" name="batteryPower" id="batteryPowerInput" required>
+            <label for="batteryPowerInput">Battery Power (mAh)</label>
+            <div class="invalid-feedback">
+                Value must be an integer.
+            </div>
+        </div>
+
+        <div class="btRadio">
+            <span class="pe-2">Bluetooth</span>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="btRadioOptions" id="btRadioYes" value="1" required>
+                <label class="form-check-label" for="btRadioYes">Yes</label>
+            </div>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="btRadioOptions" id="btRadioNo" value="0" required>
+                <label class="form-check-label" for="btRadioNo">No</label>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" step=".01" class="form-control" name="clockSpeed" id="clockSpeedInput" required>
+            <label for="clockSpeedInput" class="form-label">Clock Speed (GHz)</label>
+            <div class="invalid-feedback">
+                Value must be an integer or decimal upto 2 places.
+            </div>
+        </div>
+
+        <div class="dsRadio">
+            <span class="pe-2">Dual SIM</span>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="dsRadioOptions" id="dsRadioYes" value="1" required>
+                <label class="form-check-label" for="dsRadioYes">Yes</label>
+            </div>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="dsRadioOptions" id="dsRadioNo" value="0" required>
+                <label class="form-check-label" for="dsRadioNo">No</label>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" name="frontCam" id="fcMpInput" required>
+            <label for="fcMpInput">Front Camera Megapixels</label>
+            <div class="invalid-feedback">
+                Value must be an integer.
+            </div>
+        </div>
+
+        <div class="4gRadio">
+            <span class="pe-2">4G Support</span>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="4gRadioOptions" id="4gRadioYes" value="1" required>
+                <label class="form-check-label" for="4gRadioYes">Yes</label>
+            </div>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="4gRadioOptions" id="4gRadioNo" value="0" required>
+                <label class="form-check-label" for="4gRadioNo">No</label>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" step=".01" class="form-control" name="memory" id="memInput" required>
+            <label for="memInput">Internal Memory (GB)</label>
+            <div class="invalid-feedback">
+                Value must be an integer or decimal upto 2 places.
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" name="numCores" id="coresInput" required>
+            <label for="coresInput">Number of cores</label>
+            <div class="invalid-feedback">
+                Value must be an integer.
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" name="primaryCam" id="pcMpInput" required>
+            <label for="pcMpInput">Primary Camera Megapixels</label>
+            <div class="invalid-feedback">
+                Value must be an integer.
+            </div>
+        </div>
+
+        <div class="d-flex flex-row mb-3">
+            <div class="me-2 align-self-center">Screen Resolution</div>
+            <div class="form-floating flex-grow-1">
+                <input type="number" class="form-control" name="pxHeight" id="pxHeightInput" required>
+                <label for="pxHeightInput">Height (px)</label>
+                <div class="invalid-feedback">
+                    Value must be an integer.
+                </div>
+            </div>
+            <div class="m-2 align-self-center form-text">X</div>
+            <div class="form-floating flex-grow-1">
+                <input type="number" step=".01" class="form-control" name="pxWidth" id="pxWidthInput" required>
+                <label for="pxWidthInput">Width (px)</label>
+                <div class="invalid-feedback">
+                    Value must be an integer.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" step=".01" class="form-control" name="ram" id="ramInput" required>
+            <label for="ramInput">RAM (GB)</label>
+            <div class="invalid-feedback">
+                Value must be an integer.
+            </div>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" step=".01" class="form-control" name="scSize" id="scSizeInput" required>
+            <label for="scSizeInput">Screen Size (Inches)</label>
+            <div class="invalid-feedback">
+                Value must be an integer or decimal upto 2 places.
+            </div>
+        </div>
+
+        <div class="3gRadio">
+            <span class="pe-2">3G Support</span>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="3gRadioOptions" id="3gRadioYes" value="1" required>
+                <label class="form-check-label" for="3gRadioYes">Yes</label>
+            </div>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="3gRadioOptions" id="3gRadioNo" value="0" required>
+                <label class="form-check-label" for="3gRadioNo">No</label>
+            </div>
+        </div>
+
+        <div class="tsRadio">
+            <span class="pe-2">Touch Screen</span>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="tsRadioOptions" id="tsRadioYes" value="1" required>
+                <label class="form-check-label" for="tsRadioYes">Yes</label>
+            </div>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="tsRadioOptions" id="tsRadioNo" value="0" required>
+                <label class="form-check-label" for="tsRadioNo">No</label>
+            </div>
+        </div>
+
+        <div class="wifiRadio">
+            <span class="pe-2">Wi-Fi Support</span>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="wifiRadioOptions" id="wifiRadioYes" value="1"
+                       required>
+                <label class="form-check-label" for="wifiRadioYes">Yes</label>
+            </div>
+            <div class="mb-3 form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="wifiRadioOptions" id="wifiRadioNo" value="0"
+                       required>
+                <label class="form-check-label" for="wifiRadioNo">No</label>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary mb-1" id="btnSubmit">Submit</button>
+        </div>
+
+
+        <div class="alert alert-success d-none" role="alert" id="successAlert">
+            <p class="mb-0"><i class="fa-solid fa-circle-check pe-1"></i>Predicted price range:
+                <span id="pred-num"></span> (<span id="pred-cat"></span>)</p>
+        </div>
+
+        <div class="alert alert-danger d-none" role="alert" id="errorAlert">
+            <p class="mb-0"><i class="fa-solid fa-circle-xmark pe-1"></i>Error in getting prediction results. Please try
+                again.</p>
+        </div>
+
+    </form>
+</div>
+
+<script src="/mobile-price-classification/js/index.js"></script>
+<script src="https://kit.fontawesome.com/610dd12005.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
