@@ -20,5 +20,5 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd ${{ WORK_DIR }}
+          cd ${{ secrets.WORK_DIR }}
           git pull origin main
