@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Classifier</title>
+    <link rel="icon" type="image/x-icon" href="/food-classifier/logo.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="/food-classifier/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="col text-center mb-3">
+            <a href="/food-classifier/" class="d-inline align-middle" style="text-decoration: none; color: inherit;">
+                <img src="/food-classifier/logo.svg" alt="Logo" class="logo me-2">
+                <h1 class="d-inline align-middle">Food Image Classifier</h1>
+            </a>
+            <h3><small class="text-body-secondary">MobileNetV3 model trained on the Food-101 dataset</small></h3>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <div class="accordion mb-3" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Food Categories
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><i
+                                            class="fa-solid fa-magnifying-glass"></i></span>
+                                    <input class="form-control" type="text" id="searchInput"
+                                        placeholder="Search categories...">
+                                </div>
+                                <div id="categoriesList" class="list-group mb-3">
+                                    <!-- Categories will be listed here -->
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <nav aria-label="Page navigation">
+                                        <ul id="pagination" class="pagination pagination-sm">
+                                            <!-- Pagination buttons will go here -->
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <form id="uploadForm" class="mb-3">
+                    <input class="form-control form-control-lg mb-3" type="file" id="imageInput" accept="image/*">
+
+                    <div class="card mb-3 d-none" id="imagePreviewCard">
+                        <div class="card-header">
+                            Image Preview
+                        </div>
+                        <div class="card-body p-2">
+                            <img id="imagePreview" src="" class="card-img-bottom" alt="Image Preview">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100" id="submitBtn">
+                        <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"
+                            id="spinner"></span>
+                        <span id="buttonText">Classify Image</span>
+                    </button>
+                </form>
+
+                <div id="result" class="alert d-none mb-3"></div>
+
+                <div class="card mt-3 mb-3 d-none" id="top5PredictionsCard">
+                    <div class="card-body">
+                        <h5 class="card-title">Top 5 Predictions</h5>
+                        <ul class="list-group list-group-flush" id="top5PredictionsList">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <script src="/food-classifier/foodCategories.js"></script>
+    <script src="/food-classifier/script.js"></script>
+
+    <script src="https://kit.fontawesome.com/610dd12005.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
