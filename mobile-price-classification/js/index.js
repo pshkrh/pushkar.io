@@ -17,7 +17,7 @@ async function submitForm(evt, form) {
     }
 
     const formData = new FormData(form).entries()
-    const response = await fetch('https://2ts9gfjuk6.execute-api.us-east-1.amazonaws.com/mobile-price-classification', {
+    const response = await fetch('https://7rsrk5cb2f.execute-api.us-east-1.amazonaws.com/mobile-price-classification', {
         method: 'POST',
         headers: {
             "Access-Control-Allow-Origin": "https://pushkar.io/",
