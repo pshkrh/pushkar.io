@@ -16,16 +16,14 @@ async function submitForm(evt, form) {
         errorAlert.classList.add("d-none");
     }
 
-    const formData = new FormData(form).entries();
-    console.log("Form data: ", Object.fromEntries(formData));
+    const formData = Object.fromEntries(new FormData(form).entries());
+    console.log("Form data: ", formData);
     const response = await fetch('https://7rsrk5cb2f.execute-api.us-east-1.amazonaws.com/mobile-price-classification', {
         method: 'POST',
         headers: {
-            "Access-Control-Allow-Origin": "https://pushkar.io",
-            "Access-Control-Allow-Headers": "POST",
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(Object.fromEntries(formData))
+        body: JSON.stringify(formData)
     }).catch(err => console.log(err));
 
     if (response.ok) {
