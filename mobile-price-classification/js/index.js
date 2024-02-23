@@ -17,8 +17,6 @@ async function submitForm(evt, form) {
     }
 
     const formData = Object.fromEntries(new FormData(form).entries());
-    console.log("Form data: ", formData);
-    console.log("JSON Data: ", JSON.stringify(formData));
     const response = await fetch('https://7rsrk5cb2f.execute-api.us-east-1.amazonaws.com/mobile-price-classification', {
         method: 'POST',
         mode: 'cors',
