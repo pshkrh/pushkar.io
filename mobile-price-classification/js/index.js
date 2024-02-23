@@ -21,6 +21,7 @@ async function submitForm(evt, form) {
     console.log("JSON Data: ", JSON.stringify(formData));
     const response = await fetch('https://7rsrk5cb2f.execute-api.us-east-1.amazonaws.com/mobile-price-classification', {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
