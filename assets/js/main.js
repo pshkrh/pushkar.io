@@ -1,6 +1,7 @@
 document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
 
 const body = document.body;
+const themeColorMeta = document.getElementById("theme-color-meta");
 const lightModeIcon = document.getElementById("light-mode-icon");
 const darkModeIcon = document.getElementById("dark-mode-icon");
 
@@ -14,15 +15,19 @@ function updateIcons() {
     if (body.classList.contains('dark-mode')) {
         lightModeIcon.style.display = 'inline-block';
         darkModeIcon.style.display = 'none';
+        themeColorMeta.setAttribute('content', '#181818');
     } else {
         lightModeIcon.style.display = 'none';
         darkModeIcon.style.display = 'inline-block';
+        themeColorMeta.setAttribute('content', '#ffffff');
     }
 }
 
 if (localStorage.getItem('dark-mode') !== 'false') {
     body.classList.add('dark-mode');
+    themeColorMeta.setAttribute('content', '#181818');
 } else {
     body.classList.remove('dark-mode');
+    themeColorMeta.setAttribute('content', '#ffffff');
 }
 updateIcons();
