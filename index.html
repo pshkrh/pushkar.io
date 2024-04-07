@@ -51,6 +51,12 @@
                     <li><a href="https://github.com/pshkrh" target="_blank"><i class="fa-brands fa-github"></i></a></li>
                     <li><a href="https://scholar.google.com/citations?user=PmuJKvUAAAAJ&amp;hl=en" target="_blank"><i
                                 class="fa-solid fa-graduation-cap"></i></a></li>
+                    <li>
+                        <i id="light-mode-icon" class="fa-solid fa-sun" onclick="toggleDarkMode()"
+                            style="color: #f1c40f; cursor: pointer;"></i>
+                        <i id="dark-mode-icon" class="fa-solid fa-moon" onclick="toggleDarkMode()"
+                            style="color: #f39c12; cursor: pointer; display: none;"></i>
+                    </li>
                 </ul>
             </div>
 
@@ -215,7 +221,33 @@
 </body>
 
 <script>
-    document.getElementById("copyright-year").innerHTML = String(new Date().getFullYear());
+    document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
+
+    const body = document.body;
+    const lightModeIcon = document.getElementById("light-mode-icon");
+    const darkModeIcon = document.getElementById("dark-mode-icon");
+
+    function toggleDarkMode() {
+        const isDarkMode = body.classList.toggle('dark-mode');
+        localStorage.setItem('dark-mode', isDarkMode);
+        if (isDarkMode) {
+            lightModeIcon.style.display = 'inline';
+            darkModeIcon.style.display = 'none';
+        } else {
+            lightModeIcon.style.display = 'none';
+            darkModeIcon.style.display = 'inline';
+        }
+    }
+
+    if (localStorage.getItem('dark-mode') === 'true' || !localStorage.getItem('dark-mode')) {
+        body.classList.add('dark-mode');
+        lightModeIcon.style.display = 'inline';
+        darkModeIcon.style.display = 'none';
+    } else {
+        body.classList.remove('dark-mode');
+        lightModeIcon.style.display = 'none';
+        darkModeIcon.style.display = 'inline';
+    }
 </script>
 
 <script src="https://kit.fontawesome.com/610dd12005.js" crossorigin="anonymous"></script>

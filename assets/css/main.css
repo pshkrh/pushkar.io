@@ -5,6 +5,25 @@ html {
     background-color: #fafafa
 }
 
+body.dark-mode {
+    background-color: #181818;
+    color: #cccccc;
+}
+
+.dark-mode #website-title {
+    color: #cccccc;
+}
+
+.dark-mode .navbar,
+.dark-mode footer,
+.dark-mode .container,
+.dark-mode .content,
+.dark-mode .wrapper {
+    background-color: #181818;
+    color: #cccccc;
+}
+
+
 #website-title,
 .logoimg {
     display: flex;
@@ -115,15 +134,18 @@ hr {
     .container {
         max-width: 83%
     }
+
     .navbar {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+
     .actions {
         display: flex;
         justify-content: center;
     }
+
     .navbar-header {
         display: flex;
         justify-content: center;
@@ -134,9 +156,11 @@ hr {
     #website-title {
         font-size: 28px;
     }
+
     .logoimg {
         width: 35px;
     }
+
     .navbar-header {
         display: flex;
         align-items: center;
@@ -197,8 +221,8 @@ p .content .profile-picture {
     list-style-type: none;
     padding-right: 5px;
     font-size: 1.5em;
-  }
+}
 
 .navbar-ul li>a {
-color:inherit;
+    color: inherit;
 }
