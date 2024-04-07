@@ -220,34 +220,6 @@
 
 </body>
 
-<script>
-    document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
-
-    const body = document.body;
-    const lightModeIcon = document.getElementById("light-mode-icon");
-    const darkModeIcon = document.getElementById("dark-mode-icon");
-
-    function toggleDarkMode() {
-        const isDarkMode = body.classList.toggle('dark-mode');
-        localStorage.setItem('dark-mode', isDarkMode);
-        if (isDarkMode) {
-            lightModeIcon.style.display = 'inline';
-            darkModeIcon.style.display = 'none';
-        } else {
-            lightModeIcon.style.display = 'none';
-            darkModeIcon.style.display = 'inline';
-        }
-    }
-
-    if (localStorage.getItem('dark-mode') === 'true' || !localStorage.getItem('dark-mode')) {
-        body.classList.add('dark-mode');
-        lightModeIcon.style.display = 'inline';
-        darkModeIcon.style.display = 'none';
-    } else {
-        body.classList.remove('dark-mode');
-        lightModeIcon.style.display = 'none';
-        darkModeIcon.style.display = 'inline';
-    }
-</script>
+<script src="assets/js/main.js"></script>
 
 <script src="https://kit.fontawesome.com/610dd12005.js" crossorigin="anonymous"></script>
