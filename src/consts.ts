@@ -24,6 +24,11 @@ export const PROJECTS: Metadata = {
     "A collection of my projects with links to repositories and live demos.",
 };
 
+export const RESUME: Metadata = {
+  TITLE: "Resume",
+  DESCRIPTION: "My professional resume.",
+};
+
 export const SOCIALS: Socials = [
   {
     NAME: "GitHub",
@@ -33,8 +38,4 @@ export const SOCIALS: Socials = [
     NAME: "LinkedIn",
     HREF: "https://www.linkedin.com/in/pshkrh",
   },
-  {
-    NAME: "Google Scholar",
-    HREF: "https://scholar.google.com/citations?user=PmuJKvUAAAAJ&hl=en",
-  }
 ];

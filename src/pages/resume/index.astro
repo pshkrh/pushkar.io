@@ -1,0 +1,398 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Section from "@components/resume/ResumeSection.astro";
+import Card from "@components/resume/ResumeCard.astro";
+import PublicationCard from "@components/resume/ResumePublicationCard.astro";
+import ProjectCard from "@components/resume/ResumeProjectCard.astro";
+import Label from "@components/resume/ResumeLabel.astro";
+import SkillLayout from "@components/resume/ResumeSkillLayout.astro";
+import { RESUME } from "@consts";
+import Container from "@components/Container.astro";
+
+const languages = ["Python", "SQL", "Java"];
+const mlai = [
+	"PyTorch",
+	"Transformers",
+	"Lightning",
+	"MLflow",
+	"TensorFlow",
+	"Keras",
+	"Scikit-learn",
+	"NLTK",
+];
+const cloudtech = [
+	"AWS EC2",
+	"AWS S3",
+	"AWS Lambda",
+	"Amazon SageMaker",
+	"AWS RDS",
+	"Amazon DynamoDB",
+	"API Gateway",
+	"Docker",
+];
+const dataproc = [
+	"Pandas",
+	"NumPy",
+	"Matplotlib",
+	"Seaborn",
+	"Plotly",
+	"HoloViz",
+];
+---
+
+<Layout title={RESUME.TITLE} description={RESUME.DESCRIPTION}>
+	<Container>
+		<aside data-pagefind-ignore>
+			<div class="flex w-full flex-col gap-y-10">
+				<section class="flex flex-col items-center gap-y-7">
+					<div class="flex flex-col items-center gap-y-4">
+						<h1
+							class="animate text-3xl font-semibold text-black dark:text-white"
+						>
+							Pushkar Kurhekar
+						</h1>
+						<div
+							class="animate flex flex-wrap justify-center gap-x-7 gap-y-3"
+						>
+							<Label title="Boston, MA">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									class="text-foreground h-5 w-5"
+									slot="icon"
+									><path
+										fill="currentColor"
+										d="M12.003 11.73q.668 0 1.14-.475q.472-.475.472-1.143t-.475-1.14q-.476-.472-1.143-.472t-1.14.476q-.472.475-.472 1.143t.475 1.14q.476.472 1.143.472M12 19.677q2.82-2.454 4.458-4.991q1.638-2.538 1.638-4.39q0-2.744-1.737-4.53T12 3.981q-2.621 0-4.359 1.785t-1.737 4.53q0 1.852 1.638 4.39q1.639 2.537 4.458 4.99m0 1.343q-3.525-3.117-5.31-5.814q-1.786-2.697-1.786-4.909q0-3.173 2.066-5.234Q9.037 3 12 3t5.03 2.062q2.066 2.061 2.066 5.234q0 2.212-1.785 4.909q-1.786 2.697-5.311 5.814m0-10.904"
+									></path></svg
+								>
+							</Label>
+							<Label
+								title="contact@pushkar.io"
+								as="a"
+								href="mailto:contact@pushkar.io"
+								target="_blank"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="h-5 w-5"
+									slot="icon"
+									><path
+										d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+									></path><polyline points="22,6 12,13 2,6"
+									></polyline></svg
+								>
+							</Label>
+							<Label
+								title="LinkedIn"
+								as="a"
+								href="https://www.linkedin.com/in/pshkrh/"
+								target="_blank"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 16 16"
+									slot="icon"
+									class="text-foreground/75 h-5 w-5"
+									><path
+										fill="currentColor"
+										d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248c-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586c.173-.431.568-.878 1.232-.878c.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252c-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"
+									></path></svg
+								>
+							</Label>
+							<Label
+								title="PDF"
+								as="a"
+								href="/resume.pdf"
+								target="_blank"
+							>
+								<svg
+									width="24"
+									height="24"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+									color="#000"
+									class="text-foreground/75 h-5 w-5"
+									slot="icon"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+									></path></svg
+								>
+							</Label>
+						</div>
+					</div>
+				</section>
+
+				<Section title="About" class:list={"animate"}>
+					<p class="text-muted-foreground">
+						Data Scientist with expertise in deep learning models
+						for various NLP tasks and Computer Vision techniques. I
+						excel in enhancing model accuracy, streamlining
+						processes, and driving efficiency gains.
+					</p>
+				</Section>
+				<Section title="Experience" class:list={"animate"}>
+					<Card
+						heading="Machine Learning Co-op"
+						subheading="CAMP4 Therapeutics"
+						date="Jan 2024 - Aug 2024"
+						imagePath=""
+						altText=""
+						imageClass="h-12 w-auto md:-left-16"
+					>
+						<ul
+							class="text-muted-foreground ml-4 list-disc space-y-4"
+						>
+							<li>
+								Developed and fine-tuned large language models
+								(LLMs) for genomic sequence prediction and
+								enhanced in-house model performance through
+								advanced hyperparameter tuning and integration
+								of cutting-edge NLP techniques.
+							</li>
+							<li>
+								Configured and managed cloud infrastructure
+								using AWS and EC2 instances, ensuring seamless
+								setup, dependency installation, and code
+								execution for data processing and model training
+								tasks, tracking experiments with MLflow.
+							</li>
+							<li>
+								Optimized data pipelines using Python, bash, and
+								R scripts, resulting in an improvement in data
+								processing efficiency and streamlined model
+								training on AWS EC2 instances with MLflow.
+							</li>
+						</ul>
+					</Card>
+					<Card
+						heading="Data Scientist"
+						subheading="Tata Consultancy Services"
+						date="July 2019 - May 2022"
+						imagePath=""
+						altText=""
+						imageClass="h-12 w-auto md:-left-16"
+					>
+						<ul
+							class="text-muted-foreground ml-4 list-disc space-y-4"
+						>
+							<li>
+								Led the development of BERT-based NLP models
+								using PyTorch, increasing model accuracy by 35%
+								and reducing manual review time by 50% in a
+								patient safety application, leading to a 40%
+								boost in operational efficiency.
+							</li>
+							<li>
+								Developed an automated information extraction
+								system using OpenCV and TensorFlow, improving
+								data extraction accuracy by 64% and processing
+								rates by 30%, significantly enhancing data
+								pipeline reliability.
+							</li>
+							<li>
+								Refined and deployed transformer models
+								(including BERT variants) for named entity
+								recognition, text classification, and sentiment
+								analysis, improving overall model performance
+								and applicability.
+							</li>
+						</ul>
+					</Card>
+				</Section>
+
+				<Section title="Education" class:list={"animate"}>
+					<Card
+						heading="MS Computer Science"
+						subheading="Northeastern University"
+						date="Jan 2023 - May 2025 (Expected)"
+						imagePath=""
+						altText=""
+						imageClass="h-12 w-auto md:-left-16"
+					>
+						<ul class="text-muted-foreground ml-4 list-disc">
+							<li>GPA: 4.0/4.0</li>
+							<li>
+								Completed coursework in Natural Language
+								Processing, Machine Learning and Cloud
+								Computing.
+							</li>
+						</ul>
+					</Card>
+					<Card
+						heading="BE Computer Engineering"
+						subheading="Vidyalankar Institute of Technology"
+						date="2015 - 2019"
+						imagePath=""
+						altText=""
+						imageClass="h-12 w-auto md:-left-16"
+					>
+						<ul class="text-muted-foreground ml-4 list-disc">
+							<li>
+								Completed coursework in Data Structures,
+								Algorithms, Database Management Systems, Machine
+								Learning, Soft Computing.
+							</li>
+						</ul>
+					</Card>
+				</Section>
+
+				<Section title="Publications" class:list={"animate"}>
+					<PublicationCard
+						href="https://patents.google.com/patent/US12056171B2/en"
+						heading="System and Method for Automated Information Extraction from Scanned Documents"
+						subheading="US Patent 12,056,171 B2"
+						date=""
+						imagePath=""
+						altText=""
+						imageClass="h-12 w-auto md:-left-16"
+					>
+						<ul class="text-muted-foreground ml-4 list-disc">
+							<li>
+								Co-inventor of a patented tool designed for
+								automated information extraction from scanned
+								documents.
+							</li>
+							<li>Granted: August 6, 2024</li>
+						</ul>
+					</PublicationCard>
+					<PublicationCard
+						href="https://link.springer.com/chapter/10.1007/978-981-16-2934-1_11"
+						heading="Automated Text and Tabular Data Extraction from Scanned Document Images"
+						subheading="Conference Paper - ICDMAI 2021"
+						date=""
+						imagePath=""
+						altText=""
+						imageClass="h-12 w-auto md:-left-16"
+					>
+						<ul class="text-muted-foreground ml-4 list-disc">
+							<li>
+								Developed custom preprocessing logic and data
+								extraction from scanned images utilizing
+								computer vision techniques.
+							</li>
+						</ul>
+					</PublicationCard>
+					<PublicationCard
+						href="https://ieeexplore.ieee.org/abstract/document/8862701"
+						heading="Real Time Sign Language Estimation System"
+						subheading="Conference Paper - ICOEI 2019"
+						date=""
+						imagePath=""
+						altText=""
+						imageClass="h-12 w-auto md:-left-16"
+					>
+						<ul class="text-muted-foreground ml-4 list-disc">
+							<li>
+								Pioneered an application enabling real-time
+								prediction of American Sign Language alphabet
+								signs utilizing a webcam.
+							</li>
+						</ul>
+					</PublicationCard>
+				</Section>
+
+				<Section title="Projects" class:list={"animate"}>
+					<div
+						class="grid grid-cols-1 gap-y-3 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3"
+					>
+						<ProjectCard
+							href="/food-classifier"
+							heading="Food Image Classification"
+							subheading=""
+							imagePath="/src/images/foodclf-card-image.png"
+							altText="Image of a food classification model"
+							class="w-full"
+						/>
+						<ProjectCard
+							href="/mobile-price-classifier"
+							heading="Mobile Price Classification"
+							subheading=""
+							imagePath="/src/images/mpriceclf-card-image.png"
+							altText="Image of a mobile price classification model"
+							class="w-full"
+						/>
+						<ProjectCard
+							href="https://github.com/pshkrh/asl-py"
+							heading="Real Time Sign Language Estimation System"
+							subheading=""
+							imagePath="/src/images/asl-py-card-image.png"
+							altText="Multiple hand signs"
+							class="w-full"
+						/>
+						<ProjectCard
+							href="https://github.com/pshkrh/autoencoder-denoising"
+							heading="Denoising Images with Autoencoders"
+							subheading=""
+							imagePath="/src/images/denoising-card-image.png"
+							altText="Multiple hand signs"
+							class="w-full"
+						/>
+					</div>
+				</Section>
+
+				<Section title="Certifications" class:list={"animate"}>
+					<Card
+						as="a"
+						heading="AWS Certified Cloud Practitioner"
+						subheading="Amazon Web Services"
+						date="Feb 2021"
+						imagePath=""
+						altText=""
+						imageClass="h-11 w-auto md:-left-16"
+						href="https://www.youracclaim.com/badges/6243629c-d306-4f8c-9dde-917066080745?source=linked_in_profile"
+					/>
+					<Card
+						as="a"
+						heading="Machine Learning Engineer Nanodegree"
+						subheading="Udacity"
+						date="Feb 2021"
+						imagePath=""
+						altText=""
+						imageClass="h-11 w-auto md:-left-16"
+						href="https://confirm.udacity.com/MK4KLHZU"
+					/>
+					<Card
+						as="a"
+						heading="Deeplearning.AI TensorFlow Developer"
+						subheading="Coursera"
+						date="Jul 2020"
+						imagePath=""
+						altText=""
+						imageClass="h-11 w-auto md:-left-16"
+						href="https://www.credly.com/badges/95750ccb-7d0e-4927-950d-e471e579f863/linked_in_profile"
+					/>
+					<Card
+						as="a"
+						heading="MTA: Software Development Fundamentals"
+						subheading="Microsoft"
+						date="Oct 2017"
+						imagePath=""
+						altText=""
+						imageClass="h-11 w-auto md:-left-16"
+						href="https://www.credly.com/badges/95750ccb-7d0e-4927-950d-e471e579f863/linked_in_profile"
+					/>
+				</Section>
+
+				<Section title="Skills" class:list={"animate"}>
+					<SkillLayout title="Languages" skills={languages} />
+					<SkillLayout title="ML & AI" skills={mlai} />
+					<SkillLayout title="Cloud" skills={cloudtech} />
+					<SkillLayout title="Data Analysis" skills={dataproc} />
+				</Section>
+			</div>
+		</aside>
+	</Container>
+</Layout>
