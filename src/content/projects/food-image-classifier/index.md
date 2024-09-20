@@ -2,7 +2,7 @@
 title: "Food Image Classifier"
 description: "Classify food images from 101 categories."
 date: "12/13/2023"
-demoURL: "/project/food-classifier"
+demoURL: ""
 repoURL: "https://github.com/pshkrh/food-clf-gen"
 ---
 

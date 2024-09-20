@@ -2,7 +2,7 @@
 title: "Mobile Price Classifier"
 description: "Mobile Price Classification using Random Forests."
 date: "08/05/2023"
-demoURL: "/project/mobile-price-classification"
+demoURL: ""
 repoURL: "https://github.com/pshkrh/mobile-price-classification"
 ---
 
